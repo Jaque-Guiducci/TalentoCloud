@@ -1,12 +1,12 @@
 -- Criação das tabelas
 CREATE TABLE funcionarios (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nome TEXT,
     cargo TEXT
 );
 
 CREATE TABLE registro_atividades (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     atividade TEXT,
     data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -23,5 +23,3 @@ INSERT INTO funcionarios (nome, cargo) VALUES ('João', 'Programador');
 
 -- Verificação dos registros na tabela de registro de atividades
 SELECT * FROM registro_atividades;
-
---ok
