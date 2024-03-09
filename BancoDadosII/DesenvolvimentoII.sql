@@ -1,16 +1,25 @@
-/*Criar tabela*/
-CREATE TABLE employees (
+-- Criação das tabelas
+CREATE TABLE funcionarios (
     id INTEGER PRIMARY KEY,
-    name TEXT,
-    salary REAL,
-    department TEXT
+    nome TEXT,
+    cargo TEXT
 );
 
-/*Criar um trigger*/
+CREATE TABLE registro_atividades (
+    id INTEGER PRIMARY KEY,
+    atividade TEXT,
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-CREATE TRIGGER insert_employee_trigger
-AFTER INSERT ON employees
+-- Criação do trigger
+CREATE TRIGGER after_insert_funcionarios
+AFTER INSERT ON funcionarios
 BEGIN
-    SELECT 'Novo funcionário inserido: ' || NEW.name || ', Salário: ' || NEW.salary || ', Departamento: ' || NEW.department;
+    INSERT INTO registro_atividades (atividade) VALUES ('Novo funcionário inserido: ' || NEW.nome);
 END;
 
+-- Inserção de um novo funcionário para testar o trigger
+INSERT INTO funcionarios (nome, cargo) VALUES ('João', 'Programador');
+
+-- Verificação dos registros na tabela de registro de atividades
+SELECT * FROM registro_atividades;
