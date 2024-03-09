@@ -23,3 +23,5 @@ INSERT INTO funcionarios (nome, cargo) VALUES ('João', 'Programador');
 
 -- Verificação dos registros na tabela de registro de atividades
 SELECT * FROM registro_atividades;
+
+--ok
